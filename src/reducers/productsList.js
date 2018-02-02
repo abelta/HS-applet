@@ -1,4 +1,8 @@
-const initialState = [{ id: 1, name: 'moco' }, { id: 2, name: 'pedo' }, { id: 3, name: 'caca' }];
+const initialState = [
+  { name: 'moco', value: '010908' },
+  { name: 'pedo', value: '949622' },
+  { name: 'caca', value: '343455' },
+];
 
 const productsList = (state = initialState, action) => {
   switch (action.type) {
