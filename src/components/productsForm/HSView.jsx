@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { insertEvery } from '../../helpers';
 
 const HSView = ({ value }) => (
   <div>
     <h3>Selected HS Code</h3>
-    <p>{value}</p>
+    <p>{insertEvery(value, 2, '-')}</p>
   </div>
 );
 
