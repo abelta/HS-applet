@@ -16,8 +16,8 @@ const productsList = (state = initialState, action) => {
     case types.PRODUCTS_UPDATE:
       return { ...state, modalOpen: false };
     case types.PRODUCTS_REMOVE: {
-      const { value } = action.payload;
-      const i = state.products.findIndex(element => element.value === value);
+      const { product } = action.payload;
+      const i = state.products.indexOf(product);
       const products = [...state.products.slice(0, i), ...state.products.slice(i + 1)]; // Removes
       return { ...state, products };
     }

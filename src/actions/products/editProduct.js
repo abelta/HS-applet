@@ -1,5 +1,5 @@
 import * as types from '../actionTypes';
 
-const editProduct = ({ value }) => ({ type: types.PRODUCTS_EDIT, payload: { value } });
+const editProduct = ({ product }) => ({ type: types.PRODUCTS_EDIT, payload: { product } });
 
 export default editProduct;

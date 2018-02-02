@@ -1,5 +1,5 @@
 import * as types from '../actionTypes';
 
-const removeProduct = ({ value }) => ({ type: types.PRODUCTS_REMOVE, payload: { value } });
+const removeProduct = ({ product }) => ({ type: types.PRODUCTS_REMOVE, payload: { product } });
 
 export default removeProduct;

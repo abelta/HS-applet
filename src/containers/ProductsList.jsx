@@ -15,8 +15,8 @@ const ProductsList = ({ products, productEdit, productNew, productRemove, modalO
     <ul>
       {products.map((product, i) => (
         <li key={product.value}>
-          <Product order={i} {...product} onClick={() => productEdit({ value: product.value })} />
-          <RemoveButton onClick={() => productRemove({ value: product.value })} />
+          <Product order={i} {...product} onClick={() => productEdit({ product })} />
+          <RemoveButton onClick={() => productRemove({ product })} />
         </li>
       ))}
     </ul>
@@ -38,9 +38,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  productEdit: ({ value }) => dispatch(editProduct({ value })),
+  productEdit: ({ product }) => dispatch(editProduct({ product })),
   productNew: () => dispatch(newProduct()),
-  productRemove: ({ value }) => dispatch(removeProduct({ value })),
+  productRemove: ({ product }) => dispatch(removeProduct({ product })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
