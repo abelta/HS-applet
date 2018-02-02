@@ -18,7 +18,7 @@ const ProductsList = ({ products }) => (
 );
 
 const mapStateToProps = state => ({
-  products: state.productsList,
+  products: state.productsList.products,
 });
 
 export default connect(mapStateToProps)(ProductsList);
