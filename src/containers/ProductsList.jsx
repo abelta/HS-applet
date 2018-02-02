@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Modal from 'react-modal';
 import { editProduct, newProduct, removeProduct } from '../actions/products';
+import { ProductsForm } from '.';
 import Product, { RemoveButton } from '../components/product';
 import { NewButton } from '../components/productsList';
 
 const ProductsList = ({ products, productEdit, productNew, productRemove }) => (
   <div>
+    <Modal isOpen>
+      <ProductsForm />
+    </Modal>
     <ul>
       {products.map((product, i) => (
         <li key={product.value}>
