@@ -6,4 +6,4 @@ export const PRODUCTS_UPDATE = 'Producst/UPDATE';
 export const PRODUCTS_MODAL_CLOSE = 'Products/MODAL_CLOSE';
 
 export const PRODUCTS_FORM_SET_SEGMENT = 'ProductsForm/SET_SEGMENT';
-export const PRODUCTS_FORM_SELECT = 'ProductsForm/SET_SELECT';
+export const PRODUCTS_FORM_SELECT_REFERENCE = 'ProductsForm/SET_SELECT_REFERENCE';

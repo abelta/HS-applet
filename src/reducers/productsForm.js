@@ -3,9 +3,9 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   formIsValid: false,
   product: null,
-  selectedName: [],
+  selectedName: [null, null, null],
   selectedSegment: 0,
-  selectedValue: [],
+  selectedValue: [null, null, null],
 };
 
 const productsForm = (state = initialState, action) => {
@@ -31,6 +31,16 @@ const productsForm = (state = initialState, action) => {
     case types.PRODUCTS_FORM_SET_SEGMENT: {
       const { segment } = action.payload;
       return { ...state, selectedSegment: segment };
+    }
+    case types.PRODUCTS_FORM_SELECT_REFERENCE: {
+      const { reference } = action.payload;
+      const selectedName = [...state.selectedName];
+      const selectedValue = [...state.selectedValue];
+      selectedName[state.selectedSegment] = reference.name;
+      selectedValue[state.selectedSegment] = reference.id;
+      const formIsValid = selectedValue.every(value => !!value);
+      const selectedSegment = state.selectedSegment < 2 ? state.selectedSegment + 1 : state.selectedSegment;
+      return { ...state, formIsValid, selectedSegment, selectedName, selectedValue };
     }
     default:
       return state;
