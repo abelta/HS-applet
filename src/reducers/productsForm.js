@@ -18,7 +18,7 @@ const productsForm = (state = initialState, action) => {
     case types.PRODUCTS_EDIT: {
       const { product } = action.payload;
       return {
-        ...state,
+        ...initialState,
         product,
         formIsValid: true,
         formIsOpen: true,
@@ -28,12 +28,6 @@ const productsForm = (state = initialState, action) => {
     }
     case types.PRODUCTS_UPDATE:
       return { ...state, formIsOpen: false };
-    case types.PRODUCTS_REMOVE: {
-      const { product } = action.payload;
-      const i = state.products.indexOf(product);
-      const products = [...state.products.slice(0, i), ...state.products.slice(i + 1)]; // Removes
-      return { ...state, formIsOpen: false, products };
-    }
     case types.PRODUCTS_MODAL_CLOSE:
       return { ...state, formIsOpen: false };
     case types.PRODUCTS_FORM_SET_SEGMENT: {

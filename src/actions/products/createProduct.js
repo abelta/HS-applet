@@ -1,5 +1,5 @@
 import * as types from '../actionTypes';
 
-const createProduct = ({ name, value }) => ({ type: types.PRODUCTS_CREATE, payload: { name, value } });
+const createProduct = ({ product }) => ({ type: types.PRODUCTS_CREATE, payload: { product } });
 
 export default createProduct;

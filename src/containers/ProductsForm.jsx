@@ -37,9 +37,15 @@ const ProductsForm = ({
         <AcceptButton
           disabled={!formIsValid}
           onClick={() =>
-            product
-              ? productUpdate({ oldValue: product.value, newName: selectedName, newValue: selectedValue })
-              : productCreate({ name: selectedName, value: selectedValue })
+            product // Depending on product being present at the begining or not, update/create.
+              ? productUpdate({
+                  oldValue: product.value,
+                  product: {
+                    name: selectedName.join(' '),
+                    value: selectedValue.join(''),
+                  },
+                })
+              : productCreate({ product: { name: selectedName.join(' '), value: selectedValue.join('') } })
           }
         />
       </section>
@@ -68,6 +74,7 @@ ProductsForm.propTypes = {
 
 const mapStateToProps = state => ({
   formIsValid: state.productsForm.formIsValid,
+  product: state.productsForm.product,
   references: selectReferences(state),
   selectedValue: state.productsForm.selectedValue,
   selectedName: state.productsForm.selectedName,
@@ -75,8 +82,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   cancel: () => dispatch(closeModal()),
-  productCreate: ({ name, value }) => dispatch(createProduct({ name, value })),
-  productUpdate: ({ oldValue, newName, newValue }) => dispatch(updateProduct({ oldValue, newName, newValue })),
+  productCreate: ({ product }) => dispatch(createProduct({ product })),
+  productUpdate: ({ oldValue, product }) => dispatch(updateProduct({ oldValue, product })),
   referenceSelect: ({ reference }) => dispatch(selectReference({ reference })),
   segmentSet: segment => dispatch(setSegment(segment)),
 });
