@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { closeModal, createProduct, updateProduct } from '../actions/products';
-import { select, setSegment } from '../actions/productsForm';
+import { selectReference, setSegment } from '../actions/productsForm';
 import { AcceptButton, CancelButton, HSView, ReferencesList, Selector } from '../components/productsForm';
 import { selectReferences } from '../selectors';
 
@@ -13,8 +13,8 @@ const ProductsForm = ({
   productCreate,
   productUpdate,
   references,
+  referenceSelect,
   segmentSet,
-  selectValue,
   selectedName,
   selectedValue,
 }) => (
@@ -30,7 +30,7 @@ const ProductsForm = ({
         <Selector onClick={() => segmentSet(2)}>Subheading</Selector>
       </section>
       <section>
-        <ReferencesList data={references} onSelect={selectValue} />
+        <ReferencesList data={references} onSelect={referenceSelect} />
       </section>
       <section>
         <CancelButton onClick={cancel} />
@@ -60,8 +60,8 @@ ProductsForm.propTypes = {
   productCreate: PropTypes.func.isRequired,
   productUpdate: PropTypes.func.isRequired,
   references: PropTypes.array.isRequired,
+  referenceSelect: PropTypes.func.isRequired,
   segmentSet: PropTypes.func.isRequired,
-  selectValue: PropTypes.func.isRequired,
   selectedValue: PropTypes.array,
   selectedName: PropTypes.array,
 };
@@ -77,8 +77,8 @@ const mapDispatchToProps = dispatch => ({
   cancel: () => dispatch(closeModal()),
   productCreate: ({ name, value }) => dispatch(createProduct({ name, value })),
   productUpdate: ({ oldValue, newName, newValue }) => dispatch(updateProduct({ oldValue, newName, newValue })),
+  referenceSelect: ({ name, value }) => dispatch(selectReference({ name, value })),
   segmentSet: segment => dispatch(setSegment(segment)),
-  selectValue: ({ name, value }) => dispatch(select({ name, value })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsForm);

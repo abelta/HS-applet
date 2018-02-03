@@ -1,8 +1,8 @@
 import * as types from '../actionTypes';
 
-const select = ({ name, value }) => ({
+const selectReference = ({ name, value }) => ({
   type: types.PRODUCTS_FORM_SELECT,
   payload: { name, value },
 });
 
-export default select;
+export default selectReference;
