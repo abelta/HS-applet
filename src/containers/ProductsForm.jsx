@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { closeModal, createProduct, updateProduct } from '../actions/products';
-import { setSegment } from '../actions/productsForm';
-import { AcceptButton, CancelButton, HSView, Selector } from '../components/productsForm';
+import { select, setSegment } from '../actions/productsForm';
+import { AcceptButton, CancelButton, HSView, ReferencesList, Selector } from '../components/productsForm';
+import { selectReferences } from '../selectors';
 
 const ProductsForm = ({
   cancel,
@@ -11,7 +12,9 @@ const ProductsForm = ({
   product,
   productCreate,
   productUpdate,
+  references,
   segmentSet,
+  selectValue,
   selectedName,
   selectedValue,
 }) => (
@@ -25,6 +28,9 @@ const ProductsForm = ({
         <Selector onClick={() => segmentSet(0)}>Chapter</Selector>
         <Selector onClick={() => segmentSet(1)}>Heading</Selector>
         <Selector onClick={() => segmentSet(2)}>Subheading</Selector>
+      </section>
+      <section>
+        <ReferencesList data={references} onSelect={selectValue} />
       </section>
       <section>
         <CancelButton onClick={cancel} />
@@ -53,13 +59,16 @@ ProductsForm.propTypes = {
   product: PropTypes.object,
   productCreate: PropTypes.func.isRequired,
   productUpdate: PropTypes.func.isRequired,
+  references: PropTypes.array.isRequired,
   segmentSet: PropTypes.func.isRequired,
+  selectValue: PropTypes.func.isRequired,
   selectedValue: PropTypes.array,
   selectedName: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
   formIsValid: state.productsForm.formIsValid,
+  references: selectReferences(state),
   selectedValue: state.productsForm.selectedValue,
   selectedName: state.productsForm.selectedName,
 });
@@ -69,6 +78,7 @@ const mapDispatchToProps = dispatch => ({
   productCreate: ({ name, value }) => dispatch(createProduct({ name, value })),
   productUpdate: ({ oldValue, newName, newValue }) => dispatch(updateProduct({ oldValue, newName, newValue })),
   segmentSet: segment => dispatch(setSegment(segment)),
+  selectValue: ({ name, value }) => dispatch(select({ name, value })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsForm);
