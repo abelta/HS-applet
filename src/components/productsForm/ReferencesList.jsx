@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Reference from '../reference';
 
-const ReferencesList = ({ data, onClick }) => (
+const ReferencesList = ({ data, onSelect }) => (
   <div>
     <ul>
       {data.map(reference => (
         <li key={reference.id}>
-          <Reference {...reference} onClick={onClick} />
+          <Reference {...reference} onClick={() => onSelect({ reference })} />
         </li>
       ))}
     </ul>
@@ -15,12 +15,12 @@ const ReferencesList = ({ data, onClick }) => (
 );
 
 ReferencesList.defaultProps = {
-  onClick: null,
+  onSelect: null,
 };
 
 ReferencesList.propTypes = {
   data: PropTypes.array.isRequired,
-  onClick: PropTypes.func,
+  onSelect: PropTypes.func,
 };
 
 export default ReferencesList;

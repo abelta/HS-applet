@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch => ({
   cancel: () => dispatch(closeModal()),
   productCreate: ({ name, value }) => dispatch(createProduct({ name, value })),
   productUpdate: ({ oldValue, newName, newValue }) => dispatch(updateProduct({ oldValue, newName, newValue })),
-  referenceSelect: ({ name, value }) => dispatch(selectReference({ name, value })),
+  referenceSelect: ({ reference }) => dispatch(selectReference({ reference })),
   segmentSet: segment => dispatch(setSegment(segment)),
 });
 
