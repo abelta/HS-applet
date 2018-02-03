@@ -2,30 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { closeModal, createProduct, updateProduct } from '../actions/products';
-import { AcceptButton, CancelButton, HSView } from '../components/productsForm';
+import { setSegment } from '../actions/productsForm';
+import { AcceptButton, CancelButton, HSView, Selector } from '../components/productsForm';
 
-const ProductsForm = ({ cancel, formIsValid, product, productCreate, productUpdate, selectedName, selectedValue }) => (
+const ProductsForm = ({
+  cancel,
+  formIsValid,
+  product,
+  productCreate,
+  productUpdate,
+  segmentSet,
+  selectedName,
+  selectedValue,
+}) => (
   <div>
-    <h1>PRODUCTS FORM</h1>
+    <header>
+      <h1>PRODUCTS FORM</h1>
+    </header>
     <section>
       <HSView value={selectedValue} />
-      <CancelButton onClick={cancel} />
-      <AcceptButton
-        disabled={!formIsValid}
-        onClick={() =>
-          product
-            ? productUpdate({ oldValue: product.value, newName: selectedName, newValue: selectedValue })
-            : productCreate({ name: selectedName, value: selectedValue })
-        }
-      />
+      <section>
+        <Selector onClick={() => segmentSet(0)}>Chapter</Selector>
+        <Selector onClick={() => segmentSet(1)}>Heading</Selector>
+        <Selector onClick={() => segmentSet(2)}>Subheading</Selector>
+      </section>
+      <section>
+        <CancelButton onClick={cancel} />
+        <AcceptButton
+          disabled={!formIsValid}
+          onClick={() =>
+            product
+              ? productUpdate({ oldValue: product.value, newName: selectedName, newValue: selectedValue })
+              : productCreate({ name: selectedName, value: selectedValue })
+          }
+        />
+      </section>
     </section>
   </div>
 );
 
 ProductsForm.defaultProps = {
   product: null,
-  selectedValue: '',
-  selectedName: '',
+  selectedValue: [],
+  selectedName: [],
 };
 
 ProductsForm.propTypes = {
@@ -34,8 +53,9 @@ ProductsForm.propTypes = {
   product: PropTypes.object,
   productCreate: PropTypes.func.isRequired,
   productUpdate: PropTypes.func.isRequired,
-  selectedValue: PropTypes.string,
-  selectedName: PropTypes.string,
+  segmentSet: PropTypes.func.isRequired,
+  selectedValue: PropTypes.array,
+  selectedName: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
@@ -48,6 +68,7 @@ const mapDispatchToProps = dispatch => ({
   cancel: () => dispatch(closeModal()),
   productCreate: ({ name, value }) => dispatch(createProduct({ name, value })),
   productUpdate: ({ oldValue, newName, newValue }) => dispatch(updateProduct({ oldValue, newName, newValue })),
+  segmentSet: segment => dispatch(setSegment(segment)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsForm);
