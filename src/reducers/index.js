@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import productsList from './productsList';
+import products from './products';
 import productsForm from './productsForm';
 import references from './references';
 
 const reducer = combineReducers({
+  products,
   productsForm,
-  productsList,
   references,
 });
 

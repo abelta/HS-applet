@@ -7,9 +7,9 @@ import { ProductsForm } from '.';
 import Product, { RemoveButton } from '../components/product';
 import { NewButton } from '../components/productsList';
 
-const ProductsList = ({ products, productEdit, productNew, productRemove, modalOpen }) => (
+const ProductsList = ({ products, productEdit, productNew, productRemove, formIsOpen }) => (
   <div>
-    <Modal isOpen={modalOpen}>
+    <Modal isOpen={formIsOpen}>
       <ProductsForm />
     </Modal>
     <ul>
@@ -29,12 +29,12 @@ ProductsList.propTypes = {
   productEdit: PropTypes.func.isRequired,
   productNew: PropTypes.func.isRequired,
   productRemove: PropTypes.func.isRequired,
-  modalOpen: PropTypes.bool.isRequired,
+  formIsOpen: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  products: state.productsList.products,
-  modalOpen: state.productsList.modalOpen,
+  products: state.products,
+  formIsOpen: state.productsForm.formIsOpen,
 });
 
 const mapDispatchToProps = dispatch => ({

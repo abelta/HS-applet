@@ -1,6 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
+  formIsOpen: false,
   formIsValid: false,
   product: null,
   selectedName: [null, null, null],
@@ -11,23 +12,30 @@ const initialState = {
 const productsForm = (state = initialState, action) => {
   switch (action.type) {
     case types.PRODUCTS_NEW:
-      return initialState;
+      return { ...initialState, formIsOpen: true };
     case types.PRODUCTS_CREATE:
-      return initialState;
+      return { ...initialState, formIsOpen: false };
     case types.PRODUCTS_EDIT: {
       const { product } = action.payload;
       return {
         ...state,
         product,
         formIsValid: true,
+        formIsOpen: true,
         selectedName: product.name.split(' '),
         selectedValue: product.value.match(/.{2}/g),
       };
     }
     case types.PRODUCTS_UPDATE:
-      return initialState;
+      return { ...state, formIsOpen: false };
+    case types.PRODUCTS_REMOVE: {
+      const { product } = action.payload;
+      const i = state.products.indexOf(product);
+      const products = [...state.products.slice(0, i), ...state.products.slice(i + 1)]; // Removes
+      return { ...state, formIsOpen: false, products };
+    }
     case types.PRODUCTS_MODAL_CLOSE:
-      return initialState;
+      return { ...state, formIsOpen: false };
     case types.PRODUCTS_FORM_SET_SEGMENT: {
       const { segment } = action.payload;
       return { ...state, selectedSegment: segment };
