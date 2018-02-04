@@ -16,25 +16,35 @@ const ProductsForm = ({
   referenceSelect,
   segmentSet,
   selectedName,
+  selectedSegment,
   selectedValue,
 }) => (
-  <div>
+  <div className="container">
     <header>
-      <h1>PRODUCTS FORM</h1>
+      <div className="row center-align">
+        <h5 className="col s12">Selected HS Code</h5>
+      </div>
+      <HSView value={selectedValue} />
     </header>
     <section>
-      <HSView value={selectedValue} />
-      <section>
-        <Selector onClick={() => segmentSet(0)}>Chapter</Selector>
-        <Selector onClick={() => segmentSet(1)}>Heading</Selector>
-        <Selector onClick={() => segmentSet(2)}>Subheading</Selector>
+      <section className="row" style={{ margin: 0 }}>
+        <Selector className="col s4" onClick={() => segmentSet(0)} selected={selectedSegment === 0}>
+          Chapter
+        </Selector>
+        <Selector className="col s4" onClick={() => segmentSet(1)} selected={selectedSegment === 1}>
+          Heading
+        </Selector>
+        <Selector className="col s4" onClick={() => segmentSet(2)} selected={selectedSegment === 2}>
+          Subheading
+        </Selector>
       </section>
       <section>
         <ReferencesList data={references} onSelect={referenceSelect} />
       </section>
-      <section>
-        <CancelButton onClick={cancel} />
+      <section className="row">
+        <CancelButton className="col s6" onClick={cancel} />
         <AcceptButton
+          className="col s6"
           disabled={!formIsValid}
           onClick={() =>
             product // Depending on product being present at the begining or not, update/create.
@@ -68,16 +78,18 @@ ProductsForm.propTypes = {
   references: PropTypes.array.isRequired,
   referenceSelect: PropTypes.func.isRequired,
   segmentSet: PropTypes.func.isRequired,
-  selectedValue: PropTypes.array,
   selectedName: PropTypes.array,
+  selectedSegment: PropTypes.number.isRequired,
+  selectedValue: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
   formIsValid: state.productsForm.formIsValid,
   product: state.productsForm.product,
   references: selectReferences(state),
-  selectedValue: state.productsForm.selectedValue,
   selectedName: state.productsForm.selectedName,
+  selectedSegment: state.productsForm.selectedSegment,
+  selectedValue: state.productsForm.selectedValue,
 });
 
 const mapDispatchToProps = dispatch => ({

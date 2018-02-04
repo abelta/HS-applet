@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Reference from '../reference';
 
 const ReferencesList = ({ data, onSelect }) => (
-  <div>
-    <ul>
+  <div style={{ height: 200, overflowY: 'scroll' }}>
+    <ul className="collection">
       {data.map(reference => (
-        <li key={reference.id}>
+        <li className="collection-item row" key={reference.id} style={{ padding: 0 }}>
           <Reference {...reference} onClick={() => onSelect({ reference })} />
         </li>
       ))}
