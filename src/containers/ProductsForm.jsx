@@ -28,13 +28,13 @@ const ProductsForm = ({
     </header>
     <section>
       <section className="row" style={{ margin: 0 }}>
-        <Selector className="col s4" onClick={() => segmentSet(0)} selected={selectedSegment === 0}>
+        <Selector className="col s4" onClick={() => segmentSet({ segment: 0 })} selected={selectedSegment === 0}>
           Chapter
         </Selector>
-        <Selector className="col s4" onClick={() => segmentSet(1)} selected={selectedSegment === 1}>
+        <Selector className="col s4" onClick={() => segmentSet({ segment: 1 })} selected={selectedSegment === 1}>
           Heading
         </Selector>
-        <Selector className="col s4" onClick={() => segmentSet(2)} selected={selectedSegment === 2}>
+        <Selector className="col s4" onClick={() => segmentSet({ segment: 2 })} selected={selectedSegment === 2}>
           Subheading
         </Selector>
       </section>
