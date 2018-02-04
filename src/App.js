@@ -13,8 +13,8 @@ Modal.setAppElement('#root');
 const App = () => (
   <Provider store={store}>
     <div className="App">
-      <header className="fl w-100">
-        <h1 className="f1">HS Applet</h1>
+      <header>
+        <h1>HS Applet</h1>
       </header>
       <ProductsList />
     </div>
