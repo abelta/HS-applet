@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveButton renders correctly 1`] = `
+<button
+  className="btn-small waves-effect waves-light red white-text"
+  onClick={[Function]}
+>
+  Remove
+</button>
+`;

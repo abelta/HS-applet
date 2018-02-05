@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selector renders correctly 1`] = `
+<button
+  className="btn-flat waves-effect waves-light white-text blue"
+  onClick={[Function]}
+  style={
+    Object {
+      "borderRadius": 0,
+    }
+  }
+>
+  Segment
+</button>
+`;

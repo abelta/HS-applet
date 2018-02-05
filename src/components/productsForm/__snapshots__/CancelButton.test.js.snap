@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CancelButton renders correctly 1`] = `
+<button
+  className="btn-flat waves-effect waves-light red white-text"
+  onClick={[Function]}
+  style={
+    Object {
+      "borderRadius": 0,
+    }
+  }
+>
+  Cancel
+</button>
+`;

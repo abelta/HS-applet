@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReferencesList renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "height": 200,
+      "overflowY": "scroll",
+    }
+  }
+>
+  <ul
+    className="collection"
+  >
+    <li
+      className="collection-item row"
+      style={
+        Object {
+          "padding": 0,
+        }
+      }
+    >
+      <button
+        className="row btn-flat waves-effect waves-dark white"
+        onClick={[Function]}
+        style={
+          Object {
+            "border": "none",
+            "margin": 0,
+            "width": "100%",
+          }
+        }
+      >
+        <span
+          className="col s2"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          1
+        </span>
+        <span
+          className="col s10"
+        >
+          name
+        </span>
+      </button>
+    </li>
+    <li
+      className="collection-item row"
+      style={
+        Object {
+          "padding": 0,
+        }
+      }
+    >
+      <button
+        className="row btn-flat waves-effect waves-dark white"
+        onClick={[Function]}
+        style={
+          Object {
+            "border": "none",
+            "margin": 0,
+            "width": "100%",
+          }
+        }
+      >
+        <span
+          className="col s2"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          2
+        </span>
+        <span
+          className="col s10"
+        >
+          name
+        </span>
+      </button>
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reference renders correctly 1`] = `
+<button
+  className="row btn-flat waves-effect waves-dark white"
+  onClick={null}
+  style={
+    Object {
+      "border": "none",
+      "margin": 0,
+      "width": "100%",
+    }
+  }
+>
+  <span
+    className="col s2"
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    id
+  </span>
+  <span
+    className="col s10"
+  >
+    name
+  </span>
+</button>
+`;

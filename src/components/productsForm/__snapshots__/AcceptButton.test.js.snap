@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcceptButton renders correctly 1`] = `
+<button
+  className="btn-flat waves-effect waves-light green white-text"
+  disabled={false}
+  onClick={[Function]}
+  style={
+    Object {
+      "borderRadius": 0,
+    }
+  }
+  type="submit"
+>
+  Save
+  <i
+    className="material-icons right"
+  >
+    send
+  </i>
+</button>
+`;

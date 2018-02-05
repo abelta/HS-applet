@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HSView renders correctly 1`] = `
+<section
+  className="row"
+  style={
+    Object {
+      "height": "100px",
+    }
+  }
+>
+  <span
+    className="col s4 center-align"
+    style={
+      Object {
+        "fontSize": 80,
+        "fontWeight": "bold",
+        "lineHeight": "100px",
+      }
+    }
+  >
+    1
+  </span>
+  <span
+    className="col s4 center-align"
+    style={
+      Object {
+        "fontSize": 80,
+        "fontWeight": "bold",
+        "lineHeight": "100px",
+      }
+    }
+  >
+    2
+  </span>
+  <span
+    className="col s4 center-align"
+    style={
+      Object {
+        "fontSize": 80,
+        "fontWeight": "bold",
+        "lineHeight": "100px",
+      }
+    }
+  >
+    3
+  </span>
+</section>
+`;
