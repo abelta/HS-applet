@@ -50,3 +50,4 @@ const productsForm = (state = initialState, action) => {
 };
 
 export default productsForm;
+export { initialState };
